@@ -1,5 +1,5 @@
-const { Todo } = require('../models');
-const { Op } = require('sequelize');
+const { Todo } = require("../models");
+const { Op } = require("sequelize");
 
 // GET /api/todos - show all todos (READ)
 exports.readTodos = async (_, res) => {
@@ -13,7 +13,7 @@ exports.readTodos = async (_, res) => {
 
 // POST /api/todo - create a new todo (CREATE)
 exports.createTodo = async (req, res) => {
-  console.log('>>>>', req.body);
+  console.log(">>>>", req.body);
   try {
     let newTodo = await Todo.create({
       title: req.body.title,
@@ -41,7 +41,7 @@ exports.updateTodo = async (req, res) => {
         where: {
           id: { [Op.eq]: req.params.todoId },
         },
-      },
+      }
     );
     // console.log(idUpdated); // 0 or 1
 
@@ -55,7 +55,7 @@ exports.updateTodo = async (req, res) => {
     res.send(err);
   }
 };
-
+// Delect/api/todo/:todoId
 exports.deleteTodo = async (req, res) => {
   try {
     let isDeleted = await Todo.destroy({

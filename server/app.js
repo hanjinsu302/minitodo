@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = 8000;
 
+app.use(cors());
 // app.set("view engine", "ejs"); //view engine 등록
 // app.use("/views", express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: true }));

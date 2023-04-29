@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "../styles/AddTodo.scss";
 const AddTodo = ({ addItem }) => {
   const [todoItem, setTodoItem] = useState({
     title: "",
@@ -21,13 +21,17 @@ const AddTodo = ({ addItem }) => {
   return (
     <div className="AddTodo">
       <input
+        className="AddTodo Input"
         type="text"
         placeholder="Add your new Todo"
         value={todoItem.title}
         onChange={(e) => setTodoItem({ title: e.target.value })}
         onKeyDown={onEnterKeyDown}
       />
-      <button onClick={onButtonClick}>ADD</button>
+      <br />
+      <button onClick={onButtonClick} className="AddTodo Button">
+        ADD
+      </button>
     </div>
   );
 };

@@ -1,0 +1,47 @@
+.Todo {
+  background-color: orange;
+  width: 100%;
+  min-height: 3vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+
+  &.input {
+    width: 50vw;
+    text-transform: uppercase;
+    font-size: 25px;
+  }
+  &.input:focus {
+    border: none;
+  }
+  &.input:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+  }
+  &.checkbox {
+    border-radius: 10px;
+  }
+  & .button {
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+  &.button:focus {
+    border: none;
+  }
+  &.button:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+  }
+  &.checkbox {
+    border-radius: 10px;
+  }
+}

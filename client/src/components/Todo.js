@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Todo.scss";
 
 const Todo = ({ item, deleteItem }) => {
   console.log(item);
@@ -44,6 +45,7 @@ const Todo = ({ item, deleteItem }) => {
   return (
     <div className="Todo">
       <input
+        className="Todo checkbox"
         type="checkbox"
         id={`todo${item.id}`}
         name={`todo${item.id}`}
@@ -52,13 +54,16 @@ const Todo = ({ item, deleteItem }) => {
         onChange={checkBoxEventHandler}
       />
       <input
+        className="Todo input"
         type="text"
         value={todoItem.title}
         onClick={offReadOnlyMode}
         onKeyDown={enterKeyEventHandler}
         onChange={editEventHandler}
       />
-      <button onClick={onDeleteButtonClick}>delete</button>
+      <button onClick={onDeleteButtonClick} className="Todo button">
+        삭제
+      </button>
     </div>
   );
 };

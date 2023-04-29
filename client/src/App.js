@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Todo from "./components/Todo";
 import AddTodo from "./components/AddTodo";
-import "./styles/home.scss";
+import "./styles/_utils.scss";
+import "./styles/App.scss";
 
 function App() {
   const [todoItems, setTodoItems] = useState([
@@ -44,13 +45,15 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Todo-List</h1>
       {/* todo 추가 input */}
-      <AddTodo addItem={addItem} />
 
       {/* todo 목록 보이기 */}
       {todoItems.map((item) => {
         return <Todo key={item.id} item={item} deleteItem={deleteItem} />;
       })}
+      <br />
+      <AddTodo addItem={addItem} />
     </div>
   );
 }

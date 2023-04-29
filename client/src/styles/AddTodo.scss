@@ -1,0 +1,30 @@
+.AddTodo {
+  width: 100%;
+  min-height: 6vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  border: none;
+  &.Input {
+    font-size: 25px;
+  }
+
+  &.Button {
+    background-color: gray;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+  &.Button:focus {
+    border: none;
+  }
+  &.Button:hover {
+    background-color: orange;
+    color: black;
+  }
+}

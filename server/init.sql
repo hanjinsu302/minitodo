@@ -5,6 +5,6 @@ CREATE TABLE todo (
     title VARCHAR(100) NOT NULL,
     done TINYINT(1) NOT NULL DEFAULT 0
 );
-SELECT * FROM todo;
+SELECT * FROM todo ORDER BY id desc;
  DESC todo;
 

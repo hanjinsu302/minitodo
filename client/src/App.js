@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { API_BASE_URL } from "./app-config";
+import { REACT_APP_DB_HOST } from "./app-config";
 import Todo from "./components/Todo";
 import AddTodo from "./components/AddTodo";
 import axios from "axios";
 import "./styles/_utils.scss";
 import "./styles/App.scss";
 
-console.log(API_BASE_URL);
+console.log(process.env.REACT_APP_DB_HOST);
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
@@ -14,12 +14,15 @@ function App() {
   useEffect(() => {
     console.log("mount완료");
     const getTodos = async () => {
-      const res = await axios.get(`${API_BASE_URL}/api/todos`);
-
+      const res = await axios.get(`${process.env.REACT_APP_DB_HOST}/api/todos`);
+      console.log()
       setTodoItems(res.data);
     };
+    console.log('getTodos 선언')
 
     getTodos();
+    console.log('getTodos 실행')
+    console.log(todoItems)
   }, []);
 
   // Todo 추가하는 함수
@@ -32,9 +35,10 @@ function App() {
     // setTodoItems([...todoItems, newItem]);
 
     //============sever axios 데이터 날리기
-    const res = await axios.post(`${API_BASE_URL}/api/todo`, newItem);
+    const res = await axios.post(`${process.env.REACT_APP_DB_HOST}/api/todo`, newItem);
     console.log(res.data);
     setTodoItems([newItem, ...todoItems]);
+    console.log(process.env.REACT_APP_DB_HOST)
   };
 
   // Todo 삭제하는 함수
@@ -46,16 +50,17 @@ function App() {
     // 2. state 변경
     // setTodoItems(newTodoItems);
     //===========sever axios 데이터 지우기
-    await axios.delete(`${API_BASE_URL}/api/todo/${targetItem.id}`);
+    await axios.delete(`${process.env.REACT_APP_DB_HOST}/api/todo/${targetItem.id}`);
     const newTodoItems = todoItems.filter((item) => item.id !== targetItem.id);
     setTodoItems(newTodoItems);
+    console.log(process.env.REACT_APP_DB_HOST)
   };
   //Todo 수정하는 함수
   // (1)server API를 이용해 db데이터를 업데이트
   // (2)변경된 내용을 화면에 다시 출력
   const updateItem = async (targetItem) => {
     console.log(targetItem); // {id: n, title: 'xxx', done: false }
-    await axios.patch(`${API_BASE_URL}/api/todo/${targetItem.id}`, targetItem);
+    await axios.patch(`${process.env.REACT_APP_DB_HOST}/api/todo/${targetItem.id}`, targetItem);
     // 서버에서 수정이 완료된 후에도 취소선이 유지되도록 state 업데이트
     const updatedTodoItems = todoItems.map((item) => {
       if (item.id === targetItem.id) {
@@ -65,6 +70,7 @@ function App() {
       }
     });
     setTodoItems(updatedTodoItems);
+    console.log(process.env.REACT_APP_DB_HOST)
   };
 
   return (
@@ -78,7 +84,9 @@ function App() {
       {/* <div className="left-todos">😜 {todoItems.length} Todos</div> */}
 
       {/* todo 목록 보이기 */}
+      {console.log('hi', todoItems)}
       {todoItems.map((item) => {
+        console.log(item)
         return (
           <Todo
             key={item.id}

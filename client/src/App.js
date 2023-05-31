@@ -25,8 +25,8 @@ function App() {
   // Todo 추가하는 함수
   const addItem = async (newItem) => {
     // newItem => { title: 'xxx' }
-    // newItem.id = todoItems.length + 1;
-    // newItem.done = false;
+    newItem.id = todoItems.length + 1;
+    newItem.done = false;
     // newItem => { title: 'xxx', id: n, done: false }
 
     // setTodoItems([...todoItems, newItem]);
